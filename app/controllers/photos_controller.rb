@@ -72,6 +72,7 @@ class PhotosController < ApplicationController
       end
     end
 
+    # The following is no longer needed with the authorize method
     # def ensure_user_is_authorized
     #   if !PhotoPolicy.new(current_user, @photo).show?
     #     raise Pundit::NotAuthorizedError, "not allowed"
