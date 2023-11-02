@@ -10,6 +10,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def liked?
+    show?
+  end
+
   def show?
     user == current_user ||
      !user.private? || 
