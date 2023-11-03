@@ -11,9 +11,11 @@
 </div>
 
 <% @user.liked_photos.each do |photo| %>
-  <div class="row mb-4">
-    <div class="col-md-6 offset-md-3">
-      <%= render "photos/photo", photo: photo %>
+  <% if current_user == photo.owner || !photo.owner.private? || photo.owner.leaders.include?(current_user) %>
+    <div class="row mb-4">
+      <div class="col-md-6 offset-md-3">
+        <%= render "photos/photo", photo: photo %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
