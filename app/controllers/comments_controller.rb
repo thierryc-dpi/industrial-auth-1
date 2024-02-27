@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @photo = Photo.find(params[:comment][:photo_id])
-    authorize @photo, :viewable_by?
+    authorize @photo, :show?
     @comment = Comment.new(comment_params)
     @comment.author = current_user
 
