@@ -5,17 +5,13 @@ class UserPolicy < ApplicationPolicy
     @current_user = current_user
     @user = user
   end
-
+  
   def feed?
     true
   end
-
+  
   def liked?
     show?
-  end
-
-  def feed?
-    user == current_user
   end
   
   def discover?
