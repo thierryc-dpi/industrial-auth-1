@@ -53,7 +53,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: root_url, notice: "Photo was successfully destroyed." }
+      format.html { redirect_back_or_to root_url, notice: "Photo was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -62,6 +62,8 @@ class PhotosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_url, alert: "Photo not found"
     end
 
     # Only allow a list of trusted parameters through.
